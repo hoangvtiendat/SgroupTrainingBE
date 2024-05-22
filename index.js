@@ -85,7 +85,7 @@ app.delete('/users/:id', (req, res) => {
   let users = readData();
   users = users.filter((user) => user.id !== userId);
   writeData(users);
-  res.json(users);
+  res.json(users);   
 });
 
 app.listen(port, () => {

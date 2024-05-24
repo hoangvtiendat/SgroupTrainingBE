@@ -4,10 +4,6 @@
     "name": "Nguyen Van A"
   },
   {
-    "id": 3,
-    "name": "Nguyen Van C"
-  },
-  {
     "id": 4,
     "name": "Nguyen Van D"
   },

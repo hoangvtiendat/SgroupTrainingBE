@@ -1,4 +1,4 @@
-import UserService from './user.service';
+import UserService from './user.servicer';
 class UserController {
       getAll(req, res, next) {
         // return res.send("hello");

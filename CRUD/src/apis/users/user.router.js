@@ -1,5 +1,6 @@
 import express from 'express';
 import UserController from './user.controller';
+
 const route = express.Router();
 // route.get('/users', UserController.getUsers);
 // route.get('/admin', UserController.admin);

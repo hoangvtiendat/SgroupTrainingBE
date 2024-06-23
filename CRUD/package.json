@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/index.js",
   "scripts": {
-    "build":"babel ./src --out-dir ./build",
+    "build": "babel ./src --out-dir ./build",
     "start": "nodemon --exec babel-node src/index.js",
     "lint": "eslint ."
   },
@@ -12,7 +12,8 @@
   "dependencies": {
     "body-parser": "^1.20.2",
     "express": "^4.19.2",
-    "fs": "^0.0.1-security"
+    "fs": "^0.0.1-security",
+    "mysql2": "^3.10.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.24.5",

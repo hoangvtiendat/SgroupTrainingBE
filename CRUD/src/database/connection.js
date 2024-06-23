@@ -1,4 +1,4 @@
-// const mysql = require('mysql2')
+// // const mysql = require('mysql2')
 // import mysql from 'mysql2'
 // // Create the connection to database
 // const connections = mysql.createConnection({
@@ -39,3 +39,24 @@
 
 // // Using placeholders
 // export default pool;
+
+
+import mysql from 'mysql2/promise'
+
+async function createConnection() {
+    try {
+        const connection = await mysql.createConnection({
+            host: 'localhost',
+            user: 'root',
+            password: 'Tiendat@123',
+            database: 'backEnd',
+        })
+        console.log('Connected to the MySQL server.')
+        return connection
+    } catch (error) {
+        console.error('Error connecting to the MySQL server:', error)
+        throw error
+    }
+}
+
+export default createConnection

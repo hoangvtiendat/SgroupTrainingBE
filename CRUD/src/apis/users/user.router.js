@@ -12,9 +12,11 @@ const route = express.Router();
 // route.delete('/:id', UserController.delete);
 
 route.get('/', UserController.getUser)
-
+route.get('/:id', UserController.getUserById)
 route.post('/', UserController.createUser)
+
 route.put('/:id', UserController.updateUser)
+route.delete('/:id', UserController.deleteUser)
 
 
 

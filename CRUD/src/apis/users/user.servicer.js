@@ -59,6 +59,16 @@ class userService {
         }
     }
 
+
+async getUserById(userId) {
+    try{
+        const user = await this.userModel.getUserbyId(userId)
+        return user;
+    }catch(error) {
+        throw error;
+    }
+}
+
     async createUser(user) {
         try{
             await this.userModel.createUser(user);
@@ -71,6 +81,15 @@ class userService {
     async updateUser(userId, user) {
         try{
             await this.userModel.updateUser(userId, user);
+            return true;
+        }catch(error) {
+            throw error;
+        }
+    }
+
+    async deleteUser(userId) {  
+        try{
+            await this.userModel.deleteUser(userId);
             return true;
         }catch(error) {
             throw error;

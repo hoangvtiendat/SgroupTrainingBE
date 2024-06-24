@@ -1,62 +1,11 @@
-// // const mysql = require('mysql2')
-// import mysql from 'mysql2'
-// // Create the connection to database
-// const connections = mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'Tiendat@123',
-//     database: 'backEnd',
-// })
-
-// // A simple SELECT query
-// connections.query('SELECT * FROM user',  function (err, results, fields) {
-//     console.log(results) // results contains rows returned by server
-//     console.log(fields) // fields contains extra meta data about results, if available
-// })
-
-// export default connections
-
-// Get the client
-// import mysql from 'mysql2/promise'
-
-// // Create the connection to database
-// const pool = await mysql.createConnection({
-//     host: 'localhost',
-//     user: 'root',
-//     password: 'Tiendat@123',
-//     database: 'backEnd',
-// })
-
-// // A simple SELECT query
-// try {
-//     const [results, fields] = await pool.query('SELECT * FROM user')
-
-//     console.log(results) // results contains rows returned by server
-//     console.log(fields) // fields contains extra meta data about results, if available
-// } catch (err) {
-//     console.log(err)
-// }
-
-// // Using placeholders
-// export default pool;
-
-
 import mysql from 'mysql2/promise'
 
-async function createConnection() {
-    try {
-        const connection = await mysql.createConnection({
-            host: 'localhost',
-            user: 'root',
-            password: 'Tiendat@123',
-            database: 'backEnd',
-        })
-        console.log('Connected to the MySQL server.')
-        return connection
-    } catch (error) {
-        console.error('Error connecting to the MySQL server:', error)
-        throw error
-    }
-}
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    port: 3306,
+    password: 'Tiendat@123',
+    database: 'backEnd',
+})
 
-export default createConnection
+export default connection

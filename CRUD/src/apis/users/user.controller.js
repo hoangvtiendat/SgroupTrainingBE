@@ -75,7 +75,23 @@ class UserController {
             const users = await userService.getUser()
             return res.status(200).json({
                 success: true,
-                data: '',
+                data: users,
+            })
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                message: error.message,
+            })
+        }
+    }
+
+    async getUserById(req, res) {
+        try {
+            const userId = req.params.id
+            const user = await userService.getUserById(userId)
+            return res.status(200).json({
+                success: true,
+                data: user,
             })
         } catch (error) {
             return res.status(500).json({
@@ -120,6 +136,21 @@ class UserController {
             return res.status(200).json({
                 success: true,
                 message: 'updated user',
+            });
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                message: 'Inernal server error',
+            });
+        }
+    }
+    async deleteUser(req, res) {
+        try {
+            const userId = req.params.id
+            await userService.deleteUser(userId)
+            return res.status(200).json({
+                success: true,
+                message: 'deleted user',
             });
         } catch (error) {
             return res.status(500).json({

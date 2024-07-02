@@ -26,17 +26,43 @@ class userModel {
             throw error
         }
     }
+
+    async getUserByUsername(username) {
+        try {
+            const connections = await pool
+            const [rows, fields] = await connections.query(
+                'SELECT * FROM `user` WHERE username =?',
+                [username]
+            )
+            return rows
+        } catch (error) {
+            throw error
+        }
+    }
+    async getUserByEmail(email) {
+      try {
+          const connections = await pool
+          const [rows, fields] = await connections.query(
+              'SELECT * FROM `user` WHERE email =?',
+              [email]
+          )
+          return rows
+      } catch (error) {
+          throw error
+      } 
+    }
     async createUser(user) {
         try {
             const connections = await pool
-            const query = `INSERT INTO user(name, email, password, gender, age) values( ?, ?, ?, ?, ?);`
+            const query = `INSERT INTO user(username, email, password, gender, age, role) values( ?, ?, ?, ?, ?, ?);`
             // const { name, email, password, gender, age} = user
             const value = [
-                user.name,
+                user.username,
                 user.email,
                 user.password,
                 user.gender,
                 user.age,
+                user.role,
             ]
             await connections.query(query, value)
 
@@ -49,13 +75,14 @@ class userModel {
     async updateUser(userId, user) {
         try {
             const connection = await pool
-            const query = `UPDATE user SET name =?, email =?, password =?, gender =?, age =? WHERE id =?`
+            const query = `UPDATE user SET username =?, email =?, password =?, gender =?, age =? , role =? WHERE id =?`
             const value = [
-                user.name,
+                user.username,
                 user.email,
                 user.password,
                 user.gender,
                 user.age,
+                user.role,
                 userId,
             ]
             await connection.query(query, value)

@@ -4,10 +4,10 @@ class authController {
     async login(req, res) {
         try {
             const { username, password } = req.body
-            const user = await authService.getUserByusername(username, password)
+            const token = await authService.getUserByusername(username, password)
             return res.status(200).json({
                 success: true,
-                data: user,
+                data: token,
             })
         } catch (error) {
             return res.status(500).json({
@@ -33,6 +33,41 @@ class authController {
                 message: 'Register success',
             })
         } catch (error) {
+            return res.status(500).json({
+                success: false,
+                message: error.message,
+            })
+        }
+    }
+    async forgotPassword(req, res) {
+        try {
+            const { email } = req.body
+            await authService.forgotPassword(email)
+            return res.status(200).json({
+                success: true,
+                message: 'Password reset link has been sent to your email',
+            })
+        } catch (error) {
+            console.log("er: ",error)
+
+            return res.status(500).json({
+                success: false,
+                message: error.message,
+            })
+        }
+    }
+
+    async resetPassword(req, res) {
+        try {
+            const { token, newPassword } = req.body
+            await authService.resetPassword(token, newPassword)
+            // console.log("this is controller: \n", "token: ", token, "\n", "new password: ", newPassword, "\nEND")
+            return res.status(200).json({
+                success: true,
+                message: 'Password reset success',
+            })
+        } catch (error) {
+            
             return res.status(500).json({
                 success: false,
                 message: error.message,

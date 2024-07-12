@@ -40,16 +40,17 @@ class userModel {
         }
     }
     async getUserByEmail(email) {
-      try {
-          const connections = await pool
-          const [rows, fields] = await connections.query(
-              'SELECT * FROM `user` WHERE email =?',
-              [email]
-          )
-          return rows
-      } catch (error) {
-          throw error
-      } 
+        try {
+            const connections = await pool
+            const [rows, fields] = await connections.query(
+                'SELECT * FROM `user` WHERE email =?',
+                [email]
+            )
+
+            return rows
+        } catch (error) {
+            throw new Error('user not Found')
+        }
     }
     async createUser(user) {
         try {
@@ -97,6 +98,40 @@ class userModel {
             const connection = await pool
             const query = `DELETE FROM user WHERE id =?`
             await connection.query(query, [userId])
+            return true
+        } catch (error) {
+            throw error
+        }
+    }
+    async updateUserResetToken(userId, tokenReset, exp) {
+        try {
+            const connection = await pool
+            const query = `UPDATE user SET tokenReset=?, exp =? WHERE id =?`
+            const value = [tokenReset, exp, userId]
+            await connection.query(query, value)
+            return true
+        } catch (error) {
+            throw error
+        }
+    }
+    async getUserByResetToken(token)
+    {
+        try {
+            const connection = await pool
+            const query = `SELECT * FROM user WHERE tokenReset =? AND exp > NOW()`
+            const value = [token]
+            const [rows, fields] = await connection.query(query, value)
+            return rows
+        } catch (error) {
+            throw error
+        }
+    }
+    async updateUserPassword(userId, password){
+        try {
+            const connection = await pool
+            const query = `UPDATE user SET password =? WHERE id =?`
+            const value = [password, userId]
+            await connection.query(query, value)
             return true
         } catch (error) {
             throw error

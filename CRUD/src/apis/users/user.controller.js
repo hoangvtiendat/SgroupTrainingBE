@@ -75,7 +75,7 @@ class UserController {
             const users = await userService.getUser()
             return res.status(200).json({
                 success: true,
-                data: '',
+                data: users,
             })
         } catch (error) {
             return res.status(500).json({
@@ -84,14 +84,33 @@ class UserController {
             })
         }
     }
+
+    async getUserById(req, res) {
+        try {
+            const userId = req.params.id
+            const user = await userService.getUserById(userId)
+            return res.status(200).json({
+                success: true,
+                data: user,
+            })
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                message: error.message,
+            })
+        }
+    }
+
+    
     async createUser(req, res) {
         try {
             const newUser = {
-                name: req.body.name,
+                username: req.body.username,
                 email: req.body.email,
                 password: req.body.password,
                 gender: req.body.gender,
                 age: req.body.age,
+                role : req.body.role
             }
             await userService.createUser(newUser)
             return res.status(201).json({
@@ -110,16 +129,33 @@ class UserController {
         try {
             const userId = req.params.id
             const user = {
-                name: req.body.name,
+                username: req.body.username,
                 email: req.body.email,
                 password:  req.body.password,
                 gender: req.body.gender,
                 age: req.body.age,
+                role : req.body.role
             }
             await userService.updateUser(userId, user)
             return res.status(200).json({
                 success: true,
                 message: 'updated user',
+            });
+        } catch (error) {
+            return res.status(500).json({
+                success: false,
+                message: 'Inernal server error',
+                error
+            });
+        }
+    }
+    async deleteUser(req, res) {
+        try {
+            const userId = req.params.id
+            await userService.deleteUser(userId)
+            return res.status(200).json({
+                success: true,
+                message: 'deleted user',
             });
         } catch (error) {
             return res.status(500).json({

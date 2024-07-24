@@ -1,5 +1,6 @@
 import express from 'express';
 import UserController from './user.controller';
+import verify from '../../middleware/verify.middleware';
 
 
 const route = express.Router();
@@ -11,8 +12,10 @@ const route = express.Router();
 // route.put('/:id', UserController.update);
 // route.delete('/:id', UserController.delete);
 
-route.get('/', UserController.getUser)
+route.get('/', verify, UserController.getUser)
 route.get('/:id', UserController.getUserById)
+
+
 route.post('/', UserController.createUser)
 
 route.put('/:id', UserController.updateUser)

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Poll</title>
+        <link rel="stylesheet" href="./poll.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="title">POLLS</div>
+            <div class="content">
+                <button class="pollBox" data-target="1">
+                    <div class="pollTitle">TITLE VOTE1</div>
+                    <div class="pollContent">
+                        <div class="pollOption">
+                            <div class="contentOption">OPTION1</div>
+                            <div class="numberVote">0</div>
+                        </div>
+
+                        <div class="pollOption">
+                            <div class="contentOption">OPTION2</div>
+                            <div class="numberVote">0</div>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="pollBox" data-target="2">
+                    <div class="pollTitle">TITLE VOTE2</div>
+                    <div class="pollContent">
+                        <div class="pollOption">
+                            <div class="contentOption">OPTION1</div>
+                            <div class="numberVote">1</div>
+                        </div>
+
+                        <div class="pollOption">
+                            <div class="contentOption">OPTION3</div>
+                            <div class="numberVote">1</div>
+                        </div>
+                    </div>
+                </button>
+
+                <button class="pollBox" data-target="3">
+                    <div class="pollTitle">TITLE VOTE3</div>
+                    <div class="pollContent">
+                        <div class="pollOption">
+                            <div class="contentOption">OPTION1</div>
+                            <div class="numberVote">0</div>
+                        </div>
+
+                        <div class="pollOption">
+                            <div class="contentOption">OPTION2</div>
+                            <div class="numberVote">0</div>
+                        </div>
+                    </div>
+                </button>
+            </div>
+        </div>
+        <div class="bgrVote">
+            <div class="boxVote">
+                <div class="titleVote">TITLE VOTE</div>
+                <div class="voteOption">
+                    <div class="checkBox">
+                        <input type="radio" name="vote" class="radio" />
+                        <div class="voteContent">OPTION 1</div>
+                    </div>
+                    <div class="numberVote">0</div>
+                </div>
+
+                <div class="voteOption">
+                    <div class="checkBox">
+                        <input type="radio" name="vote" class="radio" />
+                        <div class="voteContent">OPTION 2</div>
+                    </div>
+
+                    <div class="numberVote">0</div>
+                </div>
+
+                <div class="addOption"></div>
+                <div class="addOption">
+                    <input
+                        type="text"
+                        name=""
+                        id=""
+                        class="inputAddOption"
+                        placeholder="ADD OPTION..."
+                    />
+
+					<button class="buttonAdd">ADD</button>
+                </div>
+
+                <div class="button">
+                    <button class="buttonSubmit">SUBMIT</button>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script src="./poll.js"></script>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REGISTER</title>
+    <link rel="stylesheet" href="./regiter.css" />
+</head>
+
+<body>
+
+    <div class="boxRegister">
+        <div class="content">
+            <div class="title">REGISTER FORM</div>
+            <input type="text " class="a input" placeholder="username" />
+            <input type="text " class="a input" placeholder="password" />
+            <input type="text " class="a input" placeholder="email" />
+            <input type="number" min="1" max="80" class="a input" placeholder="age" inputmode="numeric" /></input>
+
+
+            <div class="box">
+                <div class="role">
+                    <div class="roleTitle">ROLE:</div>
+                    <select class="a input roleOption">
+                        <option value="admin">user</option>
+                        <option value="user">admin</option>
+                    </select>
+                </div>
+
+                <div class="gender">
+                    <label for="male" class="b">
+                        <input type="radio" id="male" class="b" name="gender" />MALE</input>
+                    </label>
+                    <label for="female" class="b">
+                        <input type="radio" id="female" class="b" name="gender" />FEMALE</input>
+                    </label>
+
+                </div>
+            </div>
+
+            <div class="responsive a">
+                <div class="ctRes">Success!</div>
+            </div>
+            <button class="button a">LOGIN</button>
+        </div>
+
+
+    </div>
+
+</body>
+
+<script src="./login.js"></script>
+
+</html>

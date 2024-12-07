@@ -1,0 +1,138 @@
+body,
+html {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: Arial, sans-serif;
+	/* background-color: rgb(231, 228, 228); */
+	background-image: url('./backgroundLogin.jpg');
+	background-size: cover;
+
+
+}
+
+.boxRegister {
+	background-color: rgb(255, 255, 255);
+	width: 40%;
+	/* height: 40%; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.366);
+	padding: 30px 0;
+	flex-direction: column;
+	width: 500px;
+}
+
+
+.input {
+	width: 80%;
+	height: 30px;
+	border: 0.5px solid grey;
+	border-radius: 7px;
+	padding-left: 10px;
+	outline: none;
+}
+
+.roleOption {
+	margin-right: 10px;
+
+	border: 1px solid grey;
+	border-radius: 5px;
+	width: 100px;
+	color: rgb(147, 147, 147);
+	height: 25px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}
+.box{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 80%;
+	color: rgb(147, 147, 147);
+}
+
+.content {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+
+.a {
+	margin: 5px;
+}
+
+.b{
+	cursor: pointer;
+}
+#b{
+	cursor: pointer;
+}
+.role {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	width: 80%;
+	/* background-color: red; */
+	margin-left: -5px;
+	color: rgb(0, 0, 0);
+}
+
+.responsive {
+	width: 80%;
+	display: flex;
+	justify-content: start;
+	font-size: 15px;
+	color: rgb(242, 58, 58);
+	margin-top: 20px;
+
+}
+.gender{
+	display: flex;
+
+
+	width: 230px;
+	justify-content: space-between;
+	align-items: center;
+	color: black;
+
+}
+.button {
+	margin-top: 30px;
+	border: none;
+	padding: 10px 30px;
+	background-color: rgb(40, 118, 244);
+	color: white;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: ease 0.3s;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.419);
+}
+
+.button:hover {
+	background-color: rgb(0, 98, 255);
+}
+
+.more {
+	color: rgb(0, 98, 255);
+	width: 80%;
+	display: flex;
+	justify-content: space-between;
+	font-size: 15px;
+	margin-top: 20px;
+
+}
+
+.title {
+	margin-bottom: 20px;
+}

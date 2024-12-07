@@ -148,8 +148,8 @@ class authService {
             if (!user) {
                 throw new Error('Token not found or expired')
             }
-            console.log("token: ", token, "pw: ", newPassword)
-            console.log("user: ", user)
+            console.log('token: ', token, 'pw: ', newPassword)
+            console.log('user: ', user)
             console.log(0)
             const hashedPassword = await bcrypt.hash(newPassword, 10)
             console.log(1)
@@ -158,17 +158,186 @@ class authService {
             console.log('newPassword: ', newPassword)
             console.log('hashedPassword: ', hashedPassword)
             console.log('user[0].id: ', user[0].id)
-           
-
-
-            
 
             return { message: 'Password reset success' }
         } catch (error) {
-            throw error 
+            throw error
         }
     }
-   
-   
+    async createPoll(title, createBy) {
+        try {
+            // create poll
+            const poll = {
+                title,
+                createBy,
+            }
+            await this.userModel.createPoll(poll)
+            console.log("poll: ",poll)
+            return poll
+        } catch (error) {
+            throw error
+        }
+    }
+    async getUserById(id) {
+        try {
+            const user = await this.userModel.getUserbyId(id)
+            return user
+        } catch (error) {
+            throw error
+        }
+    }
+    async getPollById(pollId) {
+        try {
+            const poll = await this.userModel.getPollById(pollId)
+            return poll
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async createOption(pollId, optionText) {
+        try {
+            // create option
+            const option = {
+                pollId,
+                optionText,
+            }
+            await this.userModel.createOption(option)
+            return option
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async getPollIdByOptionId(optionId) {
+        try {
+            const pollId = await this.userModel.getPollIdByOptionId(optionId)
+            return pollId
+        } catch (error) {
+            console.log(error)
+            throw new Error('Not have optionID in PollID')
+        }
+    }
+    async vote(pollId, userId, optionId) {
+        try {
+            const vote = {
+                pollId,
+                userId,
+                optionId,
+            }
+            await this.userModel.vote(vote)
+            console.log('vote: ', vote)
+            return vote
+        } catch (error) {
+            throw error
+        }
+    }
+    async getAllPoll() {
+        try {
+            const polls = await this.userModel.getAllPoll()
+            return polls
+        } catch (error) {
+            throw error
+        }
+    }
+    async updatePoll(pollId, title) {
+        try {
+            await this.userModel.updatePoll(pollId, title)
+            return { message: 'Update poll success' }
+        } catch (error) {
+            throw error
+        }
+    }
+    async deleteVoteByPollId(id) {
+        try {
+            await this.userModel.deleteVoteByPollId(id)
+            return { message: 'Delete vote success' }
+        } catch (error) {
+            throw error
+        }
+    }
+    async deleteOptionByPollId(id) {
+        try {
+            await this.userModel.deleteOptionByPollId(id)
+            return { message: 'Delete option success' }
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async deleteVoteByOptionId(id) {
+        try {
+            await this.userModel.deleteVoteByOptionId(id)
+            return { message: 'Delete vote success' }
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async deleteOption(id) {
+        try {
+            await this.userModel.deleteOption(id)
+            return { message: 'Delete option success' }
+        } catch (error) {
+            throw error
+        }
+    }
+    async deletePoll(pollId) {
+        try {
+            await this.userModel.deletePoll(pollId)
+            return { message: 'Delete poll success' }
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async getOptionById(id) {
+        try {
+            const option = this.userModel.getOptionById(id)
+            return option
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async getVoteById(id) {
+        try {
+            const vote = this.userModel.getVoteById(id)
+            return vote
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async deleteVote(id) {
+        try {
+            await this.userModel.deleteVote(id)
+            return { message: 'Delete vote success' }
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async getAllOptionOfPoll(id) {
+        try {
+            const options = await this.userModel.getAllOptionOfPoll(id)
+            return options
+        } catch (error) {
+            throw error
+        }
+    }
+
+    async updateOptionOfPoll(pollId, optionId, optionText) {
+        try {
+            await this.userModel.updateOptionOfPoll(
+                pollId,
+                optionId,
+                optionText
+            )
+            return { message: 'Update option success' }
+        } catch (error) {
+            throw error
+        }
+    }
 }
 export default new authService()

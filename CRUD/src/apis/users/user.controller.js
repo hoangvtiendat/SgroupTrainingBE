@@ -101,7 +101,6 @@ class UserController {
         }
     }
 
-    
     async createUser(req, res) {
         try {
             const newUser = {
@@ -110,18 +109,18 @@ class UserController {
                 password: req.body.password,
                 gender: req.body.gender,
                 age: req.body.age,
-                role : req.body.role
+                role: req.body.role,
             }
             await userService.createUser(newUser)
             return res.status(201).json({
                 success: true,
                 message: 'created user',
-            });
+            })
         } catch (error) {
             return res.status(500).json({
                 success: false,
                 message: 'Inernal server error',
-            });
+            })
         }
     }
 
@@ -131,22 +130,22 @@ class UserController {
             const user = {
                 username: req.body.username,
                 email: req.body.email,
-                password:  req.body.password,
+                password: req.body.password,
                 gender: req.body.gender,
                 age: req.body.age,
-                role : req.body.role
+                role: req.body.role,
             }
             await userService.updateUser(userId, user)
             return res.status(200).json({
                 success: true,
                 message: 'updated user',
-            });
+            })
         } catch (error) {
             return res.status(500).json({
                 success: false,
                 message: 'Inernal server error',
-                error
-            });
+                error,
+            })
         }
     }
     async deleteUser(req, res) {
@@ -156,12 +155,12 @@ class UserController {
             return res.status(200).json({
                 success: true,
                 message: 'deleted user',
-            });
+            })
         } catch (error) {
             return res.status(500).json({
                 success: false,
                 message: 'Inernal server error',
-            });
+            })
         }
     }
 }
